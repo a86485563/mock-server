@@ -29,9 +29,12 @@ getting start :
 1.npm install -g json-server
 
 2.create db.json
+
   2.1 json-server --watch db.json
 
 3.Module app!
+
+  3.1 npm install json-server --save-dev
 
 修改path
 
