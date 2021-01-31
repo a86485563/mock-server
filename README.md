@@ -1,7 +1,8 @@
 # mock-server
 
 why json-server ?
-專注於前端的開發，根本不需要安裝java之類的 即可 有rest api 可以使用。
+
+專注於前端的開發，能不需要安裝java之類的，即可方便的串接api。
 json-server 是 base on express (request 、 router 等等 之類的 function 是一樣的)
 
 step 1. 建立 假資料庫。=> 資料庫模組化。
@@ -26,8 +27,15 @@ json-server :  https://github.com/typicode/json-server#add-custom-routes
 getting start :
 
 1.npm install -g json-server
+
 2.create db.json
+
+  2.1 json-server --watch db.json
+
 3.Module app!
+
+  3.1 npm install json-server --save-dev
+  3.2 create server.js
 
 修改path
 
@@ -39,4 +47,53 @@ server.use(jsonServer.rewriter({
  
 //用'/api/posts/' 取代 /posts/$1 
 // *萬用字 $數字
+
+檢查 header
+server.use((req, res, next) => {
+    if (isAuthorized(req)) { // add your authorization logic here
+        next() // continue to JSON Server router
+    } else {
+      res.status(401).jsonp({
+        //自製return msg
+        error: "error message here"
+      })
+   })
+   
+檢查http function
+***** 透過 bodyParser 來對 req做事情
+server.use(jsonServer.bodyParser)
+
+
+server.use((req, res, next) => {
+    if (isAuthorized(req)) { // add your authorization logic here
+      if(req.method === "POST"){
+        console.log('in post listener')
+        console.log(req.body)
+        req.body.createdAt = Date.now()
+        next() // continue to JSON Server router
+      }
+      else{
+        next() // continue to JSON Server router
+      }
+    } else {
+      res.status(401).jsonp({
+        //自製return msg
+        error: "error message here"
+      })
+    }
+   })
+
+最後自製回傳的訊息
+
+   // In this example, returned resources will be wrapped in a body property
+router.render = (req, res) => {
+  if(req.method === "POST"){
+  res.jsonp({
+    success : true,
+    message : "User created successfully",
+    body: req.body,
+    crateAt: Date.now()
+  })
+}
+}
 
