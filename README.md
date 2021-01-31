@@ -26,7 +26,10 @@ json-server :  https://github.com/typicode/json-server#add-custom-routes
 getting start :
 
 1.npm install -g json-server
+
 2.create db.json
+  2.1 json-server --watch db.json
+
 3.Module app!
 
 修改path
