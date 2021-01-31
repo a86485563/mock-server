@@ -11,14 +11,42 @@ server.use(jsonServer.rewriter({
   //用'/api/posts/' 取代 /posts/$1 
   // *萬用字 $數字
 
+//使用bodyParser 來對 req做事情
+server.use(jsonServer.bodyParser)
+ 
 //新增 access control
 server.use((req, res, next) => {
     if (isAuthorized(req)) { // add your authorization logic here
-      next() // continue to JSON Server router
+      if(req.method === "POST"){
+        console.log('in post listener')
+        console.log(req.body)
+        //修改req資料
+        req.body.createdAt = Date.now()
+        next() // continue to JSON Server router
+      }
+      else{
+        next() // continue to JSON Server router
+      }
     } else {
-      res.sendStatus(401)
+      res.status(401).jsonp({
+        //自製return msg
+        error: "error message here"
+      })
     }
    })
+
+   // In this example, returned resources will be wrapped in a body property
+router.render = (req, res) => {
+  if(req.method === "POST"){
+  res.jsonp({
+    success : true,
+    message : "User created successfully",
+    body: req.body,
+    crateAt: Date.now()
+  })
+}
+}
+
 
 server.use(middlewares)
 server.use(router)
@@ -28,8 +56,5 @@ server.listen(3000, () => {
 
 var isAuthorized=(req)=>{
     var header = req.get('custom-header');
-    if(header){
-        return (header=='1234')
-    }
-    return false
+    return (header)? (header=='1234') :false;
 }

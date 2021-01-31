@@ -1,9 +1,66 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "json-server-post-test",
+      "author": "typicode"
+    },
+    {
+      "id": 4,
+      "title": "json-server-post-test",
+      "author": "typicode",
+      "createdAt": 1612068518047
+    },
+    {
+      "id": 3,
+      "title": "json-server-post-test",
+      "author": "typicode",
+      "createdAt": 1612068531558
+    },
+    {
+      "id": 5,
+      "title": "json-server-post-test",
+      "author": "typicode",
+      "createdAt": 1612068637930
+    },
+    {
+      "id": 6,
+      "title": "json-server-post-test",
+      "author": "typicode",
+      "createdAt": 1612069338021
+    },
+    {
+      "id": 66,
+      "title": "json-server-post-test",
+      "author": "typicode",
+      "createdAt": 1612070664850
+    },
+    {
+      "id": 10,
+      "title": "json-server-post-test",
+      "author": "typicode",
+      "createdAt": 1612070773972
+    },
+    {
+      "id": 11,
+      "title": "json-server-post-test",
+      "author": "typicode",
+      "createdAt": 1612070840807
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
   }
+}
