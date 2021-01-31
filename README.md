@@ -1,7 +1,8 @@
 # mock-server
 
 why json-server ?
-專注於前端的開發，根本不需要安裝java之類的 即可 有rest api 可以使用。
+
+專注於前端的開發，能不需要安裝java之類的，即可方便的串接api。
 json-server 是 base on express (request 、 router 等等 之類的 function 是一樣的)
 
 step 1. 建立 假資料庫。=> 資料庫模組化。
