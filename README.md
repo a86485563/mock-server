@@ -35,6 +35,7 @@ getting start :
 3.Module app!
 
   3.1 npm install json-server --save-dev
+  3.2 create server.js
 
 修改path
 
