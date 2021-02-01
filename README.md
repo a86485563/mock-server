@@ -48,19 +48,6 @@ server.use(jsonServer.rewriter({
 //用'/api/posts/' 取代 /posts/$1 
 // *萬用字 $數字
 
-<<<<<<< HEAD
-//檢查 header
-  server.use((req, res, next) => {
-      if (isAuthorized(req)) { // add your authorization logic here
-          next() // continue to JSON Server router
-      } else {
-        res.status(401).jsonp({
-          //自製return msg
-          error: "error message here"
-        })
-     }
-    })
-=======
 
 //檢查 header  
 
@@ -84,7 +71,6 @@ server.use((req, res, next) => {
 
     })
 
->>>>>>> bbd419f1ea54b71084a704a8a332a2b6ede1d867
    
 檢查http function
 
