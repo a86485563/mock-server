@@ -48,16 +48,17 @@ server.use(jsonServer.rewriter({
 //用'/api/posts/' 取代 /posts/$1 
 // *萬用字 $數字
 
-檢查 header
-server.use((req, res, next) => {
-    if (isAuthorized(req)) { // add your authorization logic here
-        next() // continue to JSON Server router
-    } else {
-      res.status(401).jsonp({
-        //自製return msg
-        error: "error message here"
-      })
-   })
+//檢查 header
+  server.use((req, res, next) => {
+      if (isAuthorized(req)) { // add your authorization logic here
+          next() // continue to JSON Server router
+      } else {
+        res.status(401).jsonp({
+          //自製return msg
+          error: "error message here"
+        })
+     }
+    })
    
 檢查http function
 ***** 透過 bodyParser 來對 req做事情
