@@ -40,11 +40,11 @@ getting start :
 修改path
 
 // Add this before server.use(router)
+//修改path
 server.use(jsonServer.rewriter({
-  '/api/*': '/$1',
-  '/blog/:resource/:id/show': '/:resource/:id'
-}))
- 
+    '/api/posts/*': '/posts/$1',
+  }))
+  
 //用'/api/posts/' 取代 /posts/$1 
 // *萬用字 $數字
 
